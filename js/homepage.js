@@ -10,7 +10,7 @@ const getData = () => {
 getData();
 
 const displayData = (data) => {
-  console.log(data.images[0]);
+  console.log(data);
   const img = document.querySelector('img');
   img.src = data.images[0].src;
 };
