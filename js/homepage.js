@@ -1,8 +1,6 @@
 import { getData } from './utils.js';
-
 const url =
   'https://www.johann.one/wp-json/wc/v3/products?consumer_key=ck_665f152a7ef7923e561fd71862902f11f72672c9&consumer_secret=cs_bce68a8f771bf9355c3c48d304d3e50e530e2ae0';
-const url2 = 'https://jsonplaceholder.typicode.com/todos/1';
 const productList = document.querySelector('.product-list');
 const inCartIcon = document.querySelector('.navbar span');
 
@@ -13,20 +11,13 @@ let total = localStorage.getItem('total')
   ? JSON.parse(localStorage.getItem('total'))
   : 0;
 
-// window.addEventListener('DOMContentLoaded', () => {
-//   const local = localStorage.getItem('cart')
-//     ? JSON.parse(localStorage.getItem('cart'))
-//     : [];
-// });
-
 const displayData = async () => {
+  const data = await getData(url);
   inCartIcon.innerHTML = total;
   productList.innerHTML = '';
-  const data = await getData(url);
-  if (total === 0) {
+  if (cart.length === 0) {
     cart = data;
   }
-  console.log(cart);
   data.map((item) => {
     item.amountInCart = 0;
     console.log(item);
