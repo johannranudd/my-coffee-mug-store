@@ -22,8 +22,15 @@ const displayData = async () => {
     item.amountInCart = 0;
     console.log(item);
     const { id, name, stock_status, regular_price, featured, permalink } = item;
-    productList.innerHTML += `<li>
-      <img src="${item.images[0].src}"/>
+    productList.innerHTML += `
+    
+    <li>
+      <a href="details.html?id=${id}">
+        <img src="${item.images[0].src}"/>
+        <div class="img-backdrop">
+          <p>View Product</p>
+        </div>
+      </a>
       <div class="product-info">
         <p>${name}</p>
         <p><strong>${regular_price}</strong> Nok</p>
@@ -31,8 +38,9 @@ const displayData = async () => {
       <div class="add-to-cart">
         <button data-id="${id}">Add to cart</button>
       </div>
-      <a href="details.html?id=${id}">deteails</a>
-    </li>`;
+      
+    </li>
+    `;
   });
   const btns = productList.querySelectorAll('.add-to-cart button');
   btns.forEach((btn) => {
