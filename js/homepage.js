@@ -1,6 +1,6 @@
 import { getData } from './utils.js';
-const url =
-  'https://www.johann.one/wp-json/wc/v3/products?consumer_key=ck_665f152a7ef7923e561fd71862902f11f72672c9&consumer_secret=cs_bce68a8f771bf9355c3c48d304d3e50e530e2ae0';
+let searchPar = '';
+const url = `https://www.johann.one/wp-json/wc/v3/products?consumer_key=ck_665f152a7ef7923e561fd71862902f11f72672c9&consumer_secret=cs_bce68a8f771bf9355c3c48d304d3e50e530e2ae0&q=${searchPar}`;
 const productList = document.querySelector('.product-list');
 const inCartIcon = document.querySelector('.navbar span');
 
@@ -31,6 +31,7 @@ const displayData = async () => {
       <div class="add-to-cart">
         <button data-id="${id}">Add to cart</button>
       </div>
+      <a href="details.html?id=${id}">deteails</a>
     </li>`;
   });
   const btns = productList.querySelectorAll('.add-to-cart button');
