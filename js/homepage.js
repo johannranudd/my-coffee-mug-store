@@ -66,11 +66,12 @@ const displayData = async (array, cartPar) => {
 function addToCart(btns) {
   btns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      cart.filter((item) => {
+      cart.map((item) => {
         if (item.id === parseFloat(e.target.dataset.id)) {
           item.amountInCart += 1;
           total += 1;
         }
+        return item;
       });
       localStorage.setItem('total', JSON.stringify(total));
       localStorage.setItem('cart', JSON.stringify(cart));
