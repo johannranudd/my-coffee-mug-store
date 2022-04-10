@@ -1,4 +1,6 @@
 import { getData } from './utils.js';
+// import { test100 } from './homepage.js';
+// console.log(test100());
 const detailsItem = document.querySelector('.details-item');
 
 const querystring = document.location.search;
@@ -6,6 +8,7 @@ const mySearchParams = new URLSearchParams(querystring);
 const id = mySearchParams.get('id');
 
 const url = `https://www.johann.one/wp-json/wc/v3/products/${id}?consumer_key=ck_665f152a7ef7923e561fd71862902f11f72672c9&consumer_secret=cs_bce68a8f771bf9355c3c48d304d3e50e530e2ae0`;
+console.log(url);
 
 const displayOneObject = async () => {
   const data = await getData(url);

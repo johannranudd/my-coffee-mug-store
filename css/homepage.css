@@ -63,21 +63,34 @@ a {
   background: red;
   border-radius: 50%;
 }
-/*
-.menu {
+
+/* categories */
+
+.categories {
+  display: grid;
+  place-items: center;
+  padding: 1rem 0;
 }
 
-.menu button {
-  border: none;
+.categories div {
+  padding: 1rem 0;
+}
+
+.categories button {
   background: transparent;
-  font-size: 1.5rem;
-  transition: 0.3s;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 5rem;
+  height: 2rem;
+  margin: 0 1rem;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.menu button:hover {
-  transform: rotate(-90deg);
-} */
+.categories button:hover {
+  color: rgb(57, 128, 187);
+  border: 2px solid rgb(57, 128, 187);
+}
 
 /* section */
 .section-center {
