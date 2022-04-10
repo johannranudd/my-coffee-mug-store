@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/global.css" />
     <script
       src="https://kit.fontawesome.com/7246593e30.js"
       crossorigin="anonymous"
@@ -11,10 +12,25 @@
     <title>Details Page</title>
   </head>
   <body>
-    <h1>Details page</h1>
-    <div class="details-item"></div>
+    <header class="navbar">
+      <nav class="inner-navbar">
+        <a href="./index.html">
+          <h2>Logo</h2>
+        </a>
+        <a href="./cart.html" class="cart-icon">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>0</span>
+        </a>
+      </nav>
+    </header>
+    <section class="section-center">
+      <h1>Details page</h1>
+      <div class="details-item"></div>
+      <button class="add-to-cart-btn">Add to cart</button>
+    </section>
 
     <!-- JS -->
+    <!-- <script type="module" src="./js/homepage.js"></script> -->
     <script type="module" src="./js/details.js"></script>
     <script type="module" src="./js/utils.js"></script>
   </body>

@@ -15,7 +15,9 @@ let total = localStorage.getItem('total')
 const displayData = async (array, cartPar) => {
   const data = await array;
   inCartIcon.innerHTML = total;
-  productList.innerHTML = '';
+  if (productList != null) {
+    productList.innerHTML = '';
+  }
   if (cart.length === 0) {
     cart = data;
   }
@@ -37,7 +39,8 @@ const displayData = async (array, cartPar) => {
       images,
     } = item;
 
-    productList.innerHTML += `
+    if (productList != null) {
+      productList.innerHTML += `
     <li>
       <a href="details.html?id=${id}">
         <img src="${images[0].src}"/>
@@ -54,13 +57,17 @@ const displayData = async (array, cartPar) => {
       </div>
     </li>
     `;
+    }
   });
   const btns = productList.querySelectorAll('.add-to-cart button');
+  addToCart(btns);
+};
+
+function addToCart(btns) {
   btns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       cart.filter((item) => {
         if (item.id === parseFloat(e.target.dataset.id)) {
-          // console.log(item.id);
           item.amountInCart += 1;
           total += 1;
         }
@@ -70,7 +77,7 @@ const displayData = async (array, cartPar) => {
       inCartIcon.innerHTML = total;
     });
   });
-};
+}
 
 displayData(getData(url), cart);
 
@@ -97,8 +104,9 @@ async function getCategories() {
     ['all']
   );
   categories.map((category) => {
-    categoriesContainer.innerHTML += `<button data-category="${category}">${category}</button>
+    const categoriesBtn = `<button data-category="${category}">${category}</button>
     `;
+    categoriesContainer.innerHTML += categoriesBtn;
   });
   const categoryBtns = categoriesContainer.querySelectorAll('button');
   categoryBtns.forEach((btn) => {

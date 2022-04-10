@@ -1,0 +1,23 @@
+h1 {
+  padding: 2rem;
+}
+
+.cart-details {
+  display: grid;
+  /* place-items: center; */
+  grid-gap: 2rem;
+}
+
+.cart-details li {
+  width: 80%;
+  max-width: 350px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.cart-details img {
+  /* width: 100%; */
+  max-width: 150px;
+}
