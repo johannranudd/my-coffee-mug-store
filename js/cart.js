@@ -28,9 +28,6 @@ function getTotalValues() {
     : [];
   newPrice = [];
   inCartIcon.innerHTML = totalItems;
-  if (totalItems > 99) {
-    inCartIcon.innerHTML = '99+';
-  }
   cartDetails.innerHTML = '';
   cart.map((item) => {
     const { id, amountInCart, price, name, images } = item;
