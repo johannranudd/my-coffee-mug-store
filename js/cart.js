@@ -87,7 +87,11 @@ getTotalValues();
 payForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const submittedCardNumber = Number(fakeCardNumber.value);
-  if (submittedCardNumber && fakeCardNumber.value.length === 1) {
+  if (
+    submittedCardNumber &&
+    fakeCardNumber.value.length === 1 &&
+    totalItems > 0
+  ) {
     console.log(fakeCardNumber.value.length, submittedCardNumber);
     console.log((location.href = 'success.html'));
   }
@@ -129,7 +133,6 @@ function incrDecr(incrDecrBtns) {
             totalItems -= item.amountInCart;
             item.amountInCart = 0;
             console.log(item.amountInCart);
-            console.log(totalItems);
           }
           return item;
         });
