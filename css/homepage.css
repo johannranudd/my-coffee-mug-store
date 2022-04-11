@@ -1,13 +1,19 @@
 /* categories */
 
 .categories {
-  display: grid;
-  place-items: center;
   padding: 1rem 0;
+}
+
+.categories h4 {
+  text-align: center;
 }
 
 .categories div {
   padding: 1rem 0;
+  max-width: 300px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .categories button {
@@ -16,7 +22,6 @@
   border-radius: 5px;
   width: 5rem;
   height: 2rem;
-  margin: 0 1rem;
   cursor: pointer;
   transition: 0.3s;
 }
