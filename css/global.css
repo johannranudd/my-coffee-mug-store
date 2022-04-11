@@ -62,8 +62,9 @@ a {
   justify-content: center;
   align-items: center;
 
-  height: 18px;
-  width: 18px;
+  /* height: 18px;
+  width: 18px; */
+  padding: 0.05rem 0.35rem;
 
   background: red;
   border-radius: 50%;

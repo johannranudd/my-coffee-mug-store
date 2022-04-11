@@ -28,6 +28,9 @@ function getTotalValues() {
     : [];
   newPrice = [];
   inCartIcon.innerHTML = totalItems;
+  if (totalItems > 99) {
+    inCartIcon.innerHTML = '99+';
+  }
   cartDetails.innerHTML = '';
   cart.map((item) => {
     const { id, amountInCart, price, name, images } = item;
@@ -49,12 +52,24 @@ function getTotalValues() {
                 <button data-id="${id}" class="decr-btn">
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
+                <button data-id="${id}" id="remove-item-btn">Remove item</button>
             </div>
-            <p>
-            <strong>${name} </strong>(${amountInCart} x ${price},-)  = <strong class="values" data-id="${totalPricePerItem}">
-                ${totalPricePerItem}
-            </strong>
-            </p>
+            <div class="single-item-info">
+
+                <p><strong>${name} </strong></p><br/>
+
+                 <p>${
+                   amountInCart > 1
+                     ? 'Items: ' + amountInCart
+                     : 'Item: ' + amountInCart
+                 }</p> <br/>
+
+                <p>Price: ${price},-</p> <br/>
+
+                <p>Total: <strong class="values" data-id="${totalPricePerItem}">
+                    ${totalPricePerItem},-
+                </strong></p>
+            </div>
       </li>
       `;
     }
@@ -63,18 +78,10 @@ function getTotalValues() {
     total += value;
     return total;
   }, 0);
-  //   console.log(reduce);
-  //   const values = cartDetails.querySelectorAll('.values');
-  //   values.forEach((item) => {
-  //     const number = Number(item.dataset.id);
-  //     console.log(number);
-  //   });
   cartDetails.innerHTML += `
               <p>Total Items in Cart: <strong>${totalItems}</strong></p>
               <p>Total Price: <strong>${reduce}</strong></p>
       `;
-  //   console.log(totalPrice);
-
   const incrDecrBtns = cartDetails.querySelectorAll('button');
   incrDecr(incrDecrBtns);
 }
@@ -92,13 +99,14 @@ payForm.addEventListener('submit', (e) => {
 function incrDecr(incrDecrBtns) {
   incrDecrBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
+      const currentBtn = Number(e.currentTarget.dataset.id);
       if (btn.className === 'incr-btn') {
-        const currentBtn = Number(e.currentTarget.dataset.id);
-        cart.filter((item) => {
+        cart.map((item) => {
           if (item.id === currentBtn) {
             item.amountInCart += 1;
             totalItems += 1;
           }
+          return item;
         });
 
         localStorage.setItem('total', JSON.stringify(totalItems));
@@ -106,14 +114,28 @@ function incrDecr(incrDecrBtns) {
         getTotalValues();
       }
       if (btn.className === 'decr-btn') {
-        const currentBtn = Number(e.currentTarget.dataset.id);
-        cart.filter((item) => {
+        cart.map((item) => {
           if (item.id === currentBtn) {
             item.amountInCart -= 1;
             totalItems -= 1;
           }
+          return item;
         });
 
+        localStorage.setItem('total', JSON.stringify(totalItems));
+        localStorage.setItem('cart', JSON.stringify(cart));
+        getTotalValues();
+      }
+      if (btn.id === 'remove-item-btn') {
+        cart.map((item) => {
+          if (item.id === currentBtn) {
+            totalItems -= item.amountInCart;
+            item.amountInCart = 0;
+            console.log(item.amountInCart);
+            console.log(totalItems);
+          }
+          return item;
+        });
         localStorage.setItem('total', JSON.stringify(totalItems));
         localStorage.setItem('cart', JSON.stringify(cart));
         getTotalValues();
@@ -121,6 +143,3 @@ function incrDecr(incrDecrBtns) {
     });
   });
 }
-
-// localStorage.setItem('total', JSON.stringify(total));
-// localStorage.setItem('cart', JSON.stringify(cart));
