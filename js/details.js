@@ -7,12 +7,12 @@ const id = mySearchParams.get('id');
 
 const inCartIcon = document.querySelector('.navbar span');
 
-let cart = localStorage.getItem('cart')
-  ? JSON.parse(localStorage.getItem('cart'))
+let cart = sessionStorage.getItem('cart')
+  ? JSON.parse(sessionStorage.getItem('cart'))
   : [];
 
-let total = localStorage.getItem('total')
-  ? JSON.parse(localStorage.getItem('total'))
+let total = sessionStorage.getItem('total')
+  ? JSON.parse(sessionStorage.getItem('total'))
   : 0;
 
 inCartIcon.innerHTML = total;
@@ -30,15 +30,15 @@ async function getCartData() {
       }
       return item;
     });
-    localStorage.setItem('cart', JSON.stringify(finalCart));
-    localStorage.setItem('total', JSON.stringify(0));
+    sessionStorage.setItem('cart', JSON.stringify(finalCart));
+    sessionStorage.setItem('total', JSON.stringify(0));
   }
 
-  cart = localStorage.getItem('cart')
-    ? JSON.parse(localStorage.getItem('cart'))
+  cart = sessionStorage.getItem('cart')
+    ? JSON.parse(sessionStorage.getItem('cart'))
     : [];
-  total = localStorage.getItem('total')
-    ? JSON.parse(localStorage.getItem('total'))
+  total = sessionStorage.getItem('total')
+    ? JSON.parse(sessionStorage.getItem('total'))
     : 0;
 }
 window.addEventListener('DOMContentLoaded', getCartData());
@@ -46,11 +46,11 @@ window.addEventListener('DOMContentLoaded', getCartData());
 const displayOneObject = async () => {
   const data = await getData(url);
 
-  cart = localStorage.getItem('cart')
-    ? JSON.parse(localStorage.getItem('cart'))
+  cart = sessionStorage.getItem('cart')
+    ? JSON.parse(sessionStorage.getItem('cart'))
     : [];
-  total = localStorage.getItem('total')
-    ? JSON.parse(localStorage.getItem('total'))
+  total = sessionStorage.getItem('total')
+    ? JSON.parse(sessionStorage.getItem('total'))
     : 0;
 
   detailsItem.innerHTML = `
@@ -70,8 +70,8 @@ const displayOneObject = async () => {
       }
       return item;
     });
-    localStorage.setItem('total', JSON.stringify(total));
-    localStorage.setItem('cart', JSON.stringify(cart));
+    sessionStorage.setItem('total', JSON.stringify(total));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
     inCartIcon.innerHTML = total;
   });
 };

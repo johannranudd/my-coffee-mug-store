@@ -3,5 +3,5 @@ console.log(inCartIcon);
 let cart = [];
 
 let total = 0;
-localStorage.setItem('cart', JSON.stringify(cart));
-localStorage.setItem('total', JSON.stringify(total));
+sessionStorage.setItem('cart', JSON.stringify(cart));
+sessionStorage.setItem('total', JSON.stringify(total));

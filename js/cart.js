@@ -6,23 +6,23 @@ let totalPrice = 0;
 let newPrice = [];
 const inCartIcon = document.querySelector('.navbar span');
 
-let cart = localStorage.getItem('cart')
-  ? JSON.parse(localStorage.getItem('cart'))
+let cart = sessionStorage.getItem('cart')
+  ? JSON.parse(sessionStorage.getItem('cart'))
   : [];
 
-let totalItems = localStorage.getItem('total')
-  ? JSON.parse(localStorage.getItem('total'))
+let totalItems = sessionStorage.getItem('total')
+  ? JSON.parse(sessionStorage.getItem('total'))
   : 0;
 
 inCartIcon.innerHTML = totalItems;
 
 function getTotalValues() {
-  totalItems = localStorage.getItem('total')
-    ? JSON.parse(localStorage.getItem('total'))
+  totalItems = sessionStorage.getItem('total')
+    ? JSON.parse(sessionStorage.getItem('total'))
     : 0;
 
-  cart = localStorage.getItem('cart')
-    ? JSON.parse(localStorage.getItem('cart'))
+  cart = sessionStorage.getItem('cart')
+    ? JSON.parse(sessionStorage.getItem('cart'))
     : [];
   newPrice = [];
   inCartIcon.innerHTML = totalItems;
@@ -108,8 +108,8 @@ function incrDecr(incrDecrBtns) {
           return item;
         });
 
-        localStorage.setItem('total', JSON.stringify(totalItems));
-        localStorage.setItem('cart', JSON.stringify(cart));
+        sessionStorage.setItem('total', JSON.stringify(totalItems));
+        sessionStorage.setItem('cart', JSON.stringify(cart));
         getTotalValues();
       }
       if (btn.className === 'decr-btn') {
@@ -121,8 +121,8 @@ function incrDecr(incrDecrBtns) {
           return item;
         });
 
-        localStorage.setItem('total', JSON.stringify(totalItems));
-        localStorage.setItem('cart', JSON.stringify(cart));
+        sessionStorage.setItem('total', JSON.stringify(totalItems));
+        sessionStorage.setItem('cart', JSON.stringify(cart));
         getTotalValues();
       }
       if (btn.id === 'remove-item-btn') {
@@ -134,8 +134,8 @@ function incrDecr(incrDecrBtns) {
           }
           return item;
         });
-        localStorage.setItem('total', JSON.stringify(totalItems));
-        localStorage.setItem('cart', JSON.stringify(cart));
+        sessionStorage.setItem('total', JSON.stringify(totalItems));
+        sessionStorage.setItem('cart', JSON.stringify(cart));
         getTotalValues();
       }
     });
