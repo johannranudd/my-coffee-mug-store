@@ -5,11 +5,11 @@ const productList = document.querySelector('.product-list');
 const inCartIcon = document.querySelector('.navbar span');
 const categoriesContainer = document.querySelector('.categories div');
 
-let cart = localStorage.getItem('cart')
-  ? JSON.parse(localStorage.getItem('cart'))
+let cart = sessionStorage.getItem('cart')
+  ? JSON.parse(sessionStorage.getItem('cart'))
   : [];
-let total = localStorage.getItem('total')
-  ? JSON.parse(localStorage.getItem('total'))
+let total = sessionStorage.getItem('total')
+  ? JSON.parse(sessionStorage.getItem('total'))
   : 0;
 
 const displayData = async (array, cartPar) => {
@@ -73,8 +73,8 @@ function addToCart(btns) {
         }
         return item;
       });
-      localStorage.setItem('total', JSON.stringify(total));
-      localStorage.setItem('cart', JSON.stringify(cart));
+      sessionStorage.setItem('total', JSON.stringify(total));
+      sessionStorage.setItem('cart', JSON.stringify(cart));
       inCartIcon.innerHTML = total;
     });
   });
