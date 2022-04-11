@@ -62,7 +62,6 @@ const displayOneObject = async () => {
   addToCartBtn.addEventListener('click', (e) => {
     // console.log(cart);
     cart.map((item) => {
-      console.log(data.id);
       console.log(item.id);
       if (item.id === data.id) {
         item.amountInCart += 1;
@@ -71,45 +70,9 @@ const displayOneObject = async () => {
       }
       return item;
     });
-    // console.log(cart);
-    // console.log(total);
     localStorage.setItem('total', JSON.stringify(total));
     localStorage.setItem('cart', JSON.stringify(cart));
     inCartIcon.innerHTML = total;
-    // displayOneObject();
   });
 };
 displayOneObject();
-
-// function addToCartFn(addToCartBtn) {
-
-// }
-// addToCartFn(addToCartBtn);
-
-// !mal
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-// const url = `https://www.johann.one/wp-json/wc/v3/products/${id}?consumer_key=ck_665f152a7ef7923e561fd71862902f11f72672c9&consumer_secret=cs_bce68a8f771bf9355c3c48d304d3e50e530e2ae0`;
-
-// const getSingleData = () => {
-//   fetch(url)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       displayOneObject(data);
-//     })
-//     .catch((e) =>
-//       console.error(e, 'An error has occured, please check getSingleData()')
-//     );
-// };
-// getSingleData();

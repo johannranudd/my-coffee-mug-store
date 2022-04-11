@@ -2,8 +2,6 @@ const cartDetails = document.querySelector('.cart-details');
 const payForm = document.querySelector('.pay-form');
 const fakeCardNumber = document.querySelector('#fake-card-number');
 
-// let totalItems = JSON.parse(localStorage.getItem('total'));
-// let cart = JSON.parse(localStorage.getItem('cart'));
 let totalPrice = 0;
 let newPrice = [];
 const inCartIcon = document.querySelector('.navbar span');

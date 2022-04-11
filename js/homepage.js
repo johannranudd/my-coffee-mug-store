@@ -127,11 +127,3 @@ async function getCategories() {
 }
 
 getCategories();
-
-// function fetchCategories() {
-//   fetch(urlCategories)
-//     .then((res) => res.json())
-//     .then((dat) => console.log(dat));
-// }
-
-// const url = `https://www.johann.one/wp-json/wc/v3/products?consumer_key=ck_665f152a7ef7923e561fd71862902f11f72672c9&consumer_secret=cs_bce68a8f771bf9355c3c48d304d3e50e530e2ae0&q=${searchPar}`;

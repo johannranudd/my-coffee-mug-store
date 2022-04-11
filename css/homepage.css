@@ -27,11 +27,7 @@
 }
 
 /* section */
-.section-center {
-  width: 95%;
-  max-width: 1200px;
-  margin: auto;
-}
+
 /* list */
 .product-list {
   display: grid;
