@@ -24,6 +24,16 @@ const displayData = async (array, cartPar) => {
   if (cartPar.length === 0) {
     cartPar = cart;
   }
+  // const testArr = [1, 9, 5, 7, 3];
+  cartPar.sort((a, b) => {
+    const first = Number(a.id);
+    const second = Number(b.id);
+    if (first > second) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 
   cartPar.map((item) => {
     if (!item.amountInCart) {
@@ -88,8 +98,6 @@ const urlCategories = `https://www.johann.one/wp-json/wc/v3/products/categories/
 
 async function getCategories() {
   const categoryData = await getData(urlCategories);
-  // const data = await getData(url);
-  console.log(categoryData);
   const categories = categoryData.reduce(
     (total, value) => {
       if (value.slug !== 'uncategorized') {
@@ -112,7 +120,6 @@ async function getCategories() {
   const categoryBtns = categoriesContainer.querySelectorAll('button');
   categoryBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      // console.log(e.target.dataset.category);
       categoryPar = e.target.dataset.category;
       const newCart = cart.filter((item) => {
         if (e.target.dataset.category === 'all') {
@@ -120,7 +127,6 @@ async function getCategories() {
         } else if (item.categories[0].slug === e.target.dataset.category)
           return item;
       });
-      console.log(newCart);
       displayData(getData(url), newCart);
     });
   });
