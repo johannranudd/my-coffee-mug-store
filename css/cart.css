@@ -34,10 +34,12 @@
   box-shadow: none;
   border: none;
   transition: 0.3s;
+  font-size: 1rem;
+  width: 100%;
   transform: scale(1);
 }
 #remove-item-btn {
-  height: 1rem;
+  height: 1.5rem;
 }
 
 .incr-or-decr-btns button:hover {
