@@ -60,7 +60,7 @@ const displayData = async (array, cartPar) => {
       </a>
       <div class="product-info">
         <p>${name}</p>
-        <p><strong>${regular_price}</strong> Nok</p>
+        <p class="price"><strong>${regular_price}</strong> Nok</p>
       </div>
       <div class="add-to-cart">
         <button data-id="${id}">Add to cart</button>

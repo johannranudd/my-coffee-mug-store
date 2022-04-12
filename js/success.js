@@ -1,5 +1,4 @@
 const inCartIcon = document.querySelector('.navbar span');
-console.log(inCartIcon);
 let cart = [];
 
 let total = 0;

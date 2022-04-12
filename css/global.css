@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Poppins:wght@300&display=swap');
+
+/* font-family: 'Nunito', sans-serif; */
+/* font-family: 'Poppins', sans-serif; */
+
+:root {
+  --clr-blue: rgb(57, 128, 187);
+  --clr-light-blue-gradiant: linear-gradient(135deg, #fef2e5 0%, #e2d1c3 100%);
+  --clr-black: #000;
+  --clr-white: #fff;
+  --clr-orange: #c26610;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,11 +19,25 @@
 
 body {
   max-width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
+  background: var(--clr-light-blue-gradiant);
+  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
 }
 
 h1 {
   text-align: center;
+  padding: 3rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+h2,
+h2,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins', sans-serif;
 }
 
 img {
@@ -26,10 +53,27 @@ a {
   color: black;
 }
 
+button {
+  background: transparent;
+  border: 2px solid var(--clr-orange);
+  color: var(--clr-orange);
+  border-radius: 5px;
+  width: 5rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  color: var(--clr-white);
+  border: 2px solid var(--clr-orange);
+  box-shadow: inset 10rem 0rem 1rem var(--clr-orange);
+}
+
 /* navbar */
 
 .navbar {
-  background: #def;
+  background: transparent;
 }
 
 .inner-navbar {
@@ -49,7 +93,7 @@ a {
 }
 
 .cart-icon i {
-  color: rgb(0, 0, 255);
+  color: var(--clr-black);
   font-size: 1.3rem;
 }
 
@@ -66,7 +110,8 @@ a {
   width: 20px;
   /* padding: 0.05rem 0.35rem; */
 
-  background: red;
+  background: var(--clr-orange);
+  color: var(--clr-white);
   border-radius: 50%;
   font-size: 0.9rem;
 }

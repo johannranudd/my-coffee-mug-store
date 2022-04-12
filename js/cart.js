@@ -40,30 +40,32 @@ function getTotalValues() {
       cartDetails.innerHTML += `
       <li>
             <img src='${images[0].src}' />
-            <div class="incr-or-decr-btns">
-                <button data-id="${id}" class="incr-btn">
-                    <i class="fa-solid fa-chevron-up"></i>
-                </button>
-                <button data-id="${id}" class="decr-btn">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <button data-id="${id}" id="remove-item-btn">Remove item</button>
-            </div>
-            <div class="single-item-info">
+            <div class="item-btns-and-info-wrapper">
+              <div class="incr-or-decr-btns">
+                  <button data-id="${id}" class="incr-btn">
+                      <i class="fa-solid fa-chevron-up"></i>
+                  </button>
+                  <button data-id="${id}" class="decr-btn">
+                      <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <button data-id="${id}" id="remove-item-btn">Remove item</button>
+              </div>
+              <div class="single-item-info">
 
-                <p><strong>${name} </strong></p><br/>
+                  <p><strong>${name} </strong></p><br/>
 
-                 <p>${
-                   amountInCart > 1
-                     ? 'Items: ' + amountInCart
-                     : 'Item: ' + amountInCart
-                 }</p> <br/>
+                  <p>${
+                    amountInCart > 1
+                      ? 'Items: ' + amountInCart
+                      : 'Item: ' + amountInCart
+                  }</p> <br/>
 
-                <p>Price: ${price},-</p> <br/>
+                  <p>Price: ${price},-</p> <br/>
 
-                <p>Total: <strong class="values" data-id="${totalPricePerItem}">
-                    ${totalPricePerItem},-
-                </strong></p>
+                  <p>Total: <strong class="values" data-id="${totalPricePerItem}">
+                      ${totalPricePerItem},-
+                  </strong></p>
+              </div>
             </div>
       </li>
       `;
@@ -74,8 +76,10 @@ function getTotalValues() {
     return total;
   }, 0);
   cartDetails.innerHTML += `
+  <div class="total-items-and-price">
               <p>Total Items in Cart: <strong>${totalItems}</strong></p>
               <p>Total Price: <strong>${reduce}</strong></p>
+  </div>
       `;
   const incrDecrBtns = cartDetails.querySelectorAll('button');
   incrDecr(incrDecrBtns);
