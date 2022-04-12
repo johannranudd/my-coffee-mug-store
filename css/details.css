@@ -1,0 +1,30 @@
+.details-item {
+  max-width: 400px;
+  margin: auto;
+  width: 90%;
+}
+
+.details-item h3 {
+  text-align: center;
+  padding: 1rem 0;
+}
+.details-item h4 {
+  margin-bottom: 0.5rem;
+}
+
+.name-and-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.horizontal-line {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.153);
+  margin-bottom: 0.5rem;
+}
+
+.dimensions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}

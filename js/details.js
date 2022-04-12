@@ -1,4 +1,5 @@
 import { getData } from './utils.js';
+
 const detailsItem = document.querySelector('.details-item');
 
 const querystring = document.location.search;
@@ -53,9 +54,41 @@ const displayOneObject = async () => {
     ? JSON.parse(sessionStorage.getItem('total'))
     : 0;
 
+  const {
+    id,
+    name,
+    stock_status,
+    regular_price,
+    featured,
+    permalink,
+    images,
+    dimensions,
+    weight,
+    categories,
+    price,
+  } = data;
+  console.log(data);
+  console.log(dimensions);
+  console.log(weight);
+  console.log(categories[0].name);
   detailsItem.innerHTML = `
-  <img src="${data.images[0].src}" alt="${data.images[0].alt}"/>
-  <p>${data.name}</p>
+  <img src="${images[0].src}" alt="${images[0].alt}"/>
+  <h3>Product info</h3>
+  <div class="name-and-price">
+    <h4><strong>${name}</strong></h4>
+    <h4 class="price"><strong>kr ${price}</strong></h4>
+  </div>
+  <div class="horizontal-line"></div>
+  <p><strong>Dimensions:</strong></p>
+  <div class="dimensions">
+    <p>Length: <strong>${dimensions.length}</strong></p>
+    <p>Width: <strong>${dimensions.width}</strong></p>
+    <p>Height: <strong>${dimensions.height}</strong></p>
+  </div>
+  <div>
+    <p>Weight: <strong>${weight}</strong></p>
+  
+  </div>
   <button class="add-to-cart-btn">Add to cart</button>
   `;
   const addToCartBtn = document.querySelector('.add-to-cart-btn');
