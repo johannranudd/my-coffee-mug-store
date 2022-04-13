@@ -17,39 +17,40 @@ let loading = true;
 const displayData = async (array, cartPar) => {
   // let data = null;
 
-  try {
-    if (loading) {
-      productList.innerHTML = `<div class="lds-dual-ring"></div>`;
+  if (loading) {
+    productList.innerHTML = `
+      <div class="lds-dual-ring"></div>
+    `;
+  }
+  const data = await array;
+  loading = false;
+  inCartIcon.innerHTML = total;
+  if (productList != null) {
+    productList.innerHTML = '';
+  }
+  if (cart.length === 0) {
+    cart = data;
+  }
+  if (cartPar.length === 0) {
+    cartPar = cart;
+  }
+  cartPar.sort((a, b) => {
+    const first = Number(a.id);
+    const second = Number(b.id);
+    if (first > second) {
+      return 1;
+    } else {
+      return -1;
     }
-    const data = await array;
-    loading = false;
-    inCartIcon.innerHTML = total;
-    if (productList != null) {
-      productList.innerHTML = '';
-    }
-    if (cart.length === 0) {
-      cart = data;
-    }
-    if (cartPar.length === 0) {
-      cartPar = cart;
-    }
-    cartPar.sort((a, b) => {
-      const first = Number(a.id);
-      const second = Number(b.id);
-      if (first > second) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
+  });
 
-    cartPar.map((item) => {
-      if (!item.amountInCart) {
-        item.amountInCart = 0;
-      }
-      const { id, name, regular_price, images } = item;
-      if (productList != null) {
-        productList.innerHTML += `
+  cartPar.map((item) => {
+    if (!item.amountInCart) {
+      item.amountInCart = 0;
+    }
+    const { id, name, regular_price, images } = item;
+    if (productList != null) {
+      productList.innerHTML += `
     <li>
       <a href="details.html?id=${id}">
         <img src="${images[0].src}"/>
@@ -66,13 +67,10 @@ const displayData = async (array, cartPar) => {
       </div>
     </li>
     `;
-      }
-    });
-    const btns = productList.querySelectorAll('.add-to-cart button');
-    addToCart(btns);
-  } catch (e) {
-    console.error(e, 'error in displayData() function');
-  }
+    }
+  });
+  const btns = productList.querySelectorAll('.add-to-cart button');
+  addToCart(btns);
 };
 
 function addToCart(btns) {

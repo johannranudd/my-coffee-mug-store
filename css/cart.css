@@ -13,6 +13,7 @@
 
 .cart-details li img {
   max-width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .item-btns-and-info-wrapper {
@@ -33,7 +34,7 @@
   color: var(--clr-blue);
   box-shadow: none;
   border: none;
-  transition: 0.3s;
+  transition: 0.2s;
   font-size: 1rem;
   width: 100%;
   transform: scale(1);
@@ -66,6 +67,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 3rem;
 }
 
 .pay-form input {

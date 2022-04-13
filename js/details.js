@@ -46,27 +46,26 @@ window.addEventListener('DOMContentLoaded', getCartData());
 let loading = true;
 
 const displayOneObject = async () => {
-  try {
-    if (loading) {
-      detailsItem.innerHTML = `<div class="lds-dual-ring"></div>`;
-    }
-    const data = await getData(url);
-    loading = false;
-    cart = sessionStorage.getItem('cart')
-      ? JSON.parse(sessionStorage.getItem('cart'))
-      : [];
-    total = sessionStorage.getItem('total')
-      ? JSON.parse(sessionStorage.getItem('total'))
-      : 0;
+  if (loading) {
+    detailsItem.innerHTML = `<div class="lds-dual-ring"></div>`;
+  }
+  const data = await getData(url);
+  loading = false;
+  cart = sessionStorage.getItem('cart')
+    ? JSON.parse(sessionStorage.getItem('cart'))
+    : [];
+  total = sessionStorage.getItem('total')
+    ? JSON.parse(sessionStorage.getItem('total'))
+    : 0;
 
-    const { id, name, images, dimensions, weight, categories, price } = data;
+  const { id, name, images, dimensions, weight, categories, price } = data;
 
-    const radiusNum = Number(dimensions.width / 2);
-    const heightNum = Number(dimensions.height);
-    const volumeCalc = Math.PI * radiusNum * radiusNum * heightNum;
-    const volume = parseFloat(volumeCalc.toFixed());
-    const dl = volume / 100;
-    detailsItem.innerHTML = `
+  const radiusNum = Number(dimensions.width / 2);
+  const heightNum = Number(dimensions.height);
+  const volumeCalc = Math.PI * radiusNum * radiusNum * heightNum;
+  const volume = parseFloat(volumeCalc.toFixed());
+  const dl = volume / 100;
+  detailsItem.innerHTML = `
   <img src="${images[0].src}" alt="${images[0].alt}"/>
   <h3>Product info</h3>
   <div class="name-and-price">
@@ -91,25 +90,22 @@ const displayOneObject = async () => {
     <button>Add to cart</button>
   </div>
   `;
-    const addToCartBtn = document.querySelector('.add-to-cart-btn');
-    addToCartBtn.addEventListener('click', (e) => {
-      // console.log(cart);
-      cart.map((item) => {
-        console.log(item.id);
-        if (item.id === data.id) {
-          item.amountInCart += 1;
-          total += 1;
-          return item;
-        }
+  const addToCartBtn = document.querySelector('.add-to-cart-btn');
+  addToCartBtn.addEventListener('click', (e) => {
+    // console.log(cart);
+    cart.map((item) => {
+      console.log(item.id);
+      if (item.id === data.id) {
+        item.amountInCart += 1;
+        total += 1;
         return item;
-      });
-      sessionStorage.setItem('total', JSON.stringify(total));
-      sessionStorage.setItem('cart', JSON.stringify(cart));
-      inCartIcon.innerHTML = total;
+      }
+      return item;
     });
-  } catch (e) {
-    console.error(e, 'error in displayOneObject() function');
-  }
+    sessionStorage.setItem('total', JSON.stringify(total));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    inCartIcon.innerHTML = total;
+  });
 };
 displayOneObject();
 

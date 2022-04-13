@@ -2,6 +2,11 @@
   max-width: 400px;
   margin: auto;
   width: 90%;
+  margin-bottom: 3rem;
+}
+
+.details-item img {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .details-item h3 {
@@ -19,11 +24,7 @@
 .name-and-price {
   display: flex;
   justify-content: space-between;
-}
-
-.horizontal-line {
-  height: 1px;
-  background: rgba(0, 0, 0, 0.153);
+  border-bottom: 1px solid var(--clr-light-grey);
   margin-bottom: 0.5rem;
 }
 

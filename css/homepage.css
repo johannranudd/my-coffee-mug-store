@@ -45,6 +45,7 @@
   justify-items: center;
   grid-gap: 4rem;
   margin-bottom: 3rem;
+  /* min-height: 100vh; */
 }
 /* list item */
 .product-list li {
@@ -53,6 +54,10 @@
 .product-list a {
   position: relative;
   display: flex;
+}
+
+.product-list img {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .img-backdrop {
