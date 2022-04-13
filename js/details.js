@@ -92,9 +92,7 @@ const displayOneObject = async () => {
   `;
   const addToCartBtn = document.querySelector('.add-to-cart-btn');
   addToCartBtn.addEventListener('click', (e) => {
-    // console.log(cart);
     cart.map((item) => {
-      console.log(item.id);
       if (item.id === data.id) {
         item.amountInCart += 1;
         total += 1;
@@ -108,8 +106,3 @@ const displayOneObject = async () => {
   });
 };
 displayOneObject();
-
-// <p><strong>Dimensions:</strong></p>
-
-// cm3
-// &#13220;
