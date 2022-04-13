@@ -5,6 +5,5 @@ export const getData = async (url) => {
     return data;
   } catch (e) {
     console.error(e, 'an error occured, please check getData() function');
-  } finally {
   }
 };
