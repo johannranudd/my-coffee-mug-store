@@ -9,6 +9,7 @@
   --clr-black: #000;
   --clr-white: #fff;
   --clr-orange: #c26610;
+  --clr-alert: rgb(235, 107, 107);
 }
 
 * {

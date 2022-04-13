@@ -72,6 +72,15 @@
   margin: 0.5rem 0;
 }
 
+.alert {
+  padding: 0.3rem;
+}
+
+.show-alert {
+  background-color: var(--clr-alert);
+  color: var(--clr-white);
+}
+
 @media (min-width: 768px) {
   .cart-details li {
     grid-template-columns: repeat(2, 1fr);

@@ -67,10 +67,14 @@ const displayOneObject = async () => {
     categories,
     price,
   } = data;
-  console.log(data);
-  console.log(dimensions);
-  console.log(weight);
-  console.log(categories[0].name);
+  const radiusNum = Number(dimensions.width / 2);
+  const heightNum = Number(dimensions.height);
+  const volumeCalc = Math.PI * radiusNum * radiusNum * heightNum;
+  const volume = parseFloat(volumeCalc.toFixed());
+  const dl = volume / 100;
+  console.log(radiusNum);
+  console.log(heightNum);
+  console.log(volume);
   detailsItem.innerHTML = `
   <img src="${images[0].src}" alt="${images[0].alt}"/>
   <h3>Product info</h3>
@@ -79,17 +83,22 @@ const displayOneObject = async () => {
     <h4 class="price"><strong>kr ${price}</strong></h4>
   </div>
   <div class="horizontal-line"></div>
-  <p><strong>Dimensions:</strong></p>
-  <div class="dimensions">
-    <p>Length: <strong>${dimensions.length}</strong></p>
-    <p>Width: <strong>${dimensions.width}</strong></p>
-    <p>Height: <strong>${dimensions.height}</strong></p>
-  </div>
-  <div>
-    <p>Weight: <strong>${weight}</strong></p>
   
+  <div class="object-info">
+    <div class="dimensions">
+      <p>Length: <strong>${dimensions.length}cm</strong></p>
+      <p>Width: <strong>${dimensions.width}cm</strong></p>
+      <p>Height: <strong>${dimensions.height}cm</strong></p>
+    </div>
+    <div class="other">
+      <p>Weight: <strong>${weight} kg</strong></p>
+      <p>Material: <strong>${categories[0].name}</strong></p>
+      <p>Volume: <strong>${dl} dl</strong></p>
+    </div>
   </div>
-  <button class="add-to-cart-btn">Add to cart</button>
+  <div class="add-to-cart-btn">
+    <button>Add to cart</button>
+  </div>
   `;
   const addToCartBtn = document.querySelector('.add-to-cart-btn');
   addToCartBtn.addEventListener('click', (e) => {
@@ -109,3 +118,8 @@ const displayOneObject = async () => {
   });
 };
 displayOneObject();
+
+// <p><strong>Dimensions:</strong></p>
+
+// cm3
+// &#13220;

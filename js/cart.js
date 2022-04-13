@@ -87,15 +87,22 @@ function getTotalValues() {
 getTotalValues();
 
 payForm.addEventListener('submit', (e) => {
+  const alert = document.querySelector('.alert');
   e.preventDefault();
   const submittedCardNumber = Number(fakeCardNumber.value);
   if (
     submittedCardNumber &&
-    fakeCardNumber.value.length === 1 &&
+    fakeCardNumber.value.length === 12 &&
     totalItems > 0
   ) {
-    console.log(fakeCardNumber.value.length, submittedCardNumber);
-    console.log((location.href = 'success.html'));
+    location.href = 'success.html';
+  } else {
+    alert.innerHTML = 'Credit card number must be 12 digits';
+    alert.classList.add('show-alert');
+    setTimeout(() => {
+      alert.innerHTML = '';
+      alert.classList.remove('show-alert');
+    }, 3000);
   }
 });
 

@@ -12,6 +12,10 @@
   margin-bottom: 0.5rem;
 }
 
+.price {
+  color: var(--clr-orange);
+}
+
 .name-and-price {
   display: flex;
   justify-content: space-between;
@@ -23,8 +27,30 @@
   margin-bottom: 0.5rem;
 }
 
-.dimensions {
+.object-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+}
+
+.dimensions p {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+.other p {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+}
+
+.add-to-cart-btn {
+  text-align: center;
+}
+
+.add-to-cart-btn button {
+  width: 100%;
+}
+.add-to-cart-btn button:hover {
+  box-shadow: inset 26rem 0rem 1rem var(--clr-orange);
 }
