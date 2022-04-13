@@ -12,45 +12,44 @@ let total = sessionStorage.getItem('total')
   ? JSON.parse(sessionStorage.getItem('total'))
   : 0;
 
+let loading = true;
+
 const displayData = async (array, cartPar) => {
-  const data = await array;
-  inCartIcon.innerHTML = total;
-  if (productList != null) {
-    productList.innerHTML = '';
-  }
-  if (cart.length === 0) {
-    cart = data;
-  }
-  if (cartPar.length === 0) {
-    cartPar = cart;
-  }
-  // const testArr = [1, 9, 5, 7, 3];
-  cartPar.sort((a, b) => {
-    const first = Number(a.id);
-    const second = Number(b.id);
-    if (first > second) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  // let data = null;
 
-  cartPar.map((item) => {
-    if (!item.amountInCart) {
-      item.amountInCart = 0;
+  try {
+    if (loading) {
+      productList.innerHTML = `<div class="lds-dual-ring"></div>`;
     }
-    const {
-      id,
-      name,
-      stock_status,
-      regular_price,
-      featured,
-      permalink,
-      images,
-    } = item;
-
+    const data = await array;
+    loading = false;
+    inCartIcon.innerHTML = total;
     if (productList != null) {
-      productList.innerHTML += `
+      productList.innerHTML = '';
+    }
+    if (cart.length === 0) {
+      cart = data;
+    }
+    if (cartPar.length === 0) {
+      cartPar = cart;
+    }
+    cartPar.sort((a, b) => {
+      const first = Number(a.id);
+      const second = Number(b.id);
+      if (first > second) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+
+    cartPar.map((item) => {
+      if (!item.amountInCart) {
+        item.amountInCart = 0;
+      }
+      const { id, name, regular_price, images } = item;
+      if (productList != null) {
+        productList.innerHTML += `
     <li>
       <a href="details.html?id=${id}">
         <img src="${images[0].src}"/>
@@ -67,10 +66,13 @@ const displayData = async (array, cartPar) => {
       </div>
     </li>
     `;
-    }
-  });
-  const btns = productList.querySelectorAll('.add-to-cart button');
-  addToCart(btns);
+      }
+    });
+    const btns = productList.querySelectorAll('.add-to-cart button');
+    addToCart(btns);
+  } catch (e) {
+    console.error(e, 'error in displayData() function');
+  }
 };
 
 function addToCart(btns) {
