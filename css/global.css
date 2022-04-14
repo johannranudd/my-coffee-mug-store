@@ -69,7 +69,10 @@ button {
 button:hover {
   color: var(--clr-white);
   border: 2px solid var(--clr-orange);
-  box-shadow: inset 10rem 0rem 1rem var(--clr-orange);
+  /* box-shadow: inset 10rem 0rem 1rem var(--clr-orange); */
+  box-shadow: inset 10rem 0rem 1rem var(--clr-orange),
+    rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 /* loader */
@@ -158,7 +161,7 @@ button:hover {
 /* footer */
 
 footer {
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   border-top: 1px solid var(--clr-light-grey);
   text-align: center;
 }

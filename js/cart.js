@@ -78,7 +78,7 @@ function getTotalValues() {
   cartDetails.innerHTML += `
   <div class="total-items-and-price">
               <p>Total Items in Cart: <strong>${totalItems}</strong></p>
-              <p>Total Price: <strong>${reduce}</strong></p>
+              <p>Total Price: <strong>${reduce} kr</strong></p>
   </div>
       `;
   const incrDecrBtns = cartDetails.querySelectorAll('button');
@@ -141,7 +141,6 @@ function incrDecr(incrDecrBtns) {
           if (item.id === currentBtn) {
             totalItems -= item.amountInCart;
             item.amountInCart = 0;
-            console.log(item.amountInCart);
           }
           return item;
         });
