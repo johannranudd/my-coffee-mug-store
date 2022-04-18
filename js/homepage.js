@@ -53,7 +53,7 @@ const displayData = async (array, cartPar) => {
       productList.innerHTML += `
     <li>
       <a href="details.html?id=${id}">
-        <img src="${images[0].src}"/>
+        <img src="${images[0].src}" alt="${images[0].alt}"/>
         <div class="img-backdrop">
           <p>View Product</p>
         </div>

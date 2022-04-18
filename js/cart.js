@@ -39,7 +39,7 @@ function getTotalValues() {
 
       cartDetails.innerHTML += `
       <li>
-            <img src='${images[0].src}' />
+            <img src='${images[0].src}' alt="${images[0].alt}" />
             <div class="item-btns-and-info-wrapper">
               <div class="incr-or-decr-btns">
                   <button data-id="${id}" class="incr-btn">
@@ -92,12 +92,12 @@ payForm.addEventListener('submit', (e) => {
   const submittedCardNumber = Number(fakeCardNumber.value);
   if (
     submittedCardNumber &&
-    fakeCardNumber.value.length === 12 &&
+    fakeCardNumber.value.length === 4 &&
     totalItems > 0
   ) {
     location.href = 'success.html';
   } else {
-    alert.innerHTML = 'Credit card number must be 12 digits';
+    alert.innerHTML = 'Credit card number must be 4 digits';
     alert.classList.add('show-alert');
     setTimeout(() => {
       alert.innerHTML = '';
