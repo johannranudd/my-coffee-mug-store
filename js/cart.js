@@ -87,23 +87,33 @@ function getTotalValues() {
 getTotalValues();
 
 payForm.addEventListener('submit', (e) => {
+  // console.log(totalItems);
   const alert = document.querySelector('.alert');
   e.preventDefault();
   const submittedCardNumber = Number(fakeCardNumber.value);
+
+  if (!submittedCardNumber || fakeCardNumber.value.length !== 4) {
+    alert.innerHTML = 'Credit card number must be 4 digits';
+    alert.classList.add('show-alert');
+  }
+
+  if (totalItems === 0) {
+    alert.innerHTML = 'There are no items in cart';
+    alert.classList.add('show-alert');
+  }
+
   if (
     submittedCardNumber &&
     fakeCardNumber.value.length === 4 &&
     totalItems > 0
   ) {
     location.href = 'success.html';
-  } else {
-    alert.innerHTML = 'Credit card number must be 4 digits';
-    alert.classList.add('show-alert');
-    setTimeout(() => {
-      alert.innerHTML = '';
-      alert.classList.remove('show-alert');
-    }, 3000);
   }
+
+  setTimeout(() => {
+    alert.innerHTML = '';
+    alert.classList.remove('show-alert');
+  }, 3000);
 });
 
 function incrDecr(incrDecrBtns) {
