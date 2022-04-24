@@ -121,6 +121,10 @@ button:hover {
   align-items: center;
 }
 
+.logo {
+  font-size: 2rem;
+}
+
 .cart-icon {
   position: relative;
   display: inline-flex;
