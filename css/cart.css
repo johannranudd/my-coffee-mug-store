@@ -86,7 +86,8 @@
 
 @media (min-width: 768px) {
   .cart-details li {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 43% 57%;
+    grid-gap: 0;
   }
   .cart-details li img {
     max-width: 180px;
@@ -96,9 +97,9 @@
     align-items: end;
   }
   .total-items-and-price {
-    max-width: 550px;
+    max-width: 580px;
   }
   .pay-form {
-    max-width: 550px;
+    max-width: 580px;
   }
 }
